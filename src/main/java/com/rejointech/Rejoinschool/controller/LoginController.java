@@ -25,7 +25,8 @@ public class LoginController {
         if(logout!=null)
             errorMessage="Successfully LoggedOut!!";
 
-        model.addAttribute("errorMessage",errorMessage);
+        log.error(errorMessage);
+        model.addAttribute("errorMessge",errorMessage);
         return "login.html";
     }
     @RequestMapping(value = "/logout",method = {RequestMethod.GET})
@@ -33,5 +34,6 @@ public class LoginController {
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         if(auth!=null)
             new SecurityContextLogoutHandler().logout(request,response,auth);
+        log.error(auth.getName());
         return "redirect:/login?logout=true";
     }}

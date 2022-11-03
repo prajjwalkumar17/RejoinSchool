@@ -28,6 +28,18 @@
                         <a      th:classappend="${#httpServletRequest.getRequestURI()=='/contact' ? 'active':''}"
                                 th:href="@{/contact}" class="nav-link">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a      th:classappend="${#httpServletRequest.getRequestURI()=='/login' ? 'active':''}"
+                                th:href="@{/login}" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a      th:classappend="${#httpServletRequest.getRequestURI()=='/dashboard' ? 'active':''}"
+                                th:href="@{/dashboard}" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a      th:classappend="${#httpServletRequest.getRequestURI()=='/logout' ? 'active':''}"
+                                th:href="@{/logout}" class="nav-link">Logout</a>
+                    </li>
                 </ul>
             </div>
             <!-- toggle switch for light and dark theme -->
