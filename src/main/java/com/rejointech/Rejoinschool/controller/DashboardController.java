@@ -15,8 +15,8 @@ public class DashboardController{
     public String displayDashboard(Model model,Authentication auth){
         model.addAttribute("username",auth.getName());
         model.addAttribute("roles",auth.getAuthorities().toString());
-//        throw new RuntimeException("Its a bad day");
-        return "dashboard.html";
+        throw new RuntimeException("Its a bad day");
+//        return "dashboard.html";
     }
 
 }
