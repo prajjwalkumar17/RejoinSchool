@@ -1,8 +1,11 @@
 package com.rejointech.Rejoinschool.controller;
 import com.rejointech.Rejoinschool.model.Contact;
+import com.rejointech.Rejoinschool.repository.ContactRepo;
 import com.rejointech.Rejoinschool.service.ContactService;
+import com.rejointech.Rejoinschool.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -48,5 +52,16 @@ public class contactController {
         }
         contactService.saveMessageDetails(contact);
         return "redirect:/contact";
+    }
+    @RequestMapping("/displayMessages")
+    public ModelAndView displayMessages(Model model){
+        List<Contact> contactMsg=contactService.findMsgWithOpenStatus();
+        ModelAndView modelAndView=new ModelAndView("messages.html");
+        modelAndView.addObject("contactMsgs",contactMsg);
+        return modelAndView;
+    }
+    public List<Contact> findMsgWithOpenStatus(){
+        List<Contact> contactMsgs= ContactRepo.findMsgWithStatus(Constants.OPEN);
+        return contactMsgs;
     }
 }
