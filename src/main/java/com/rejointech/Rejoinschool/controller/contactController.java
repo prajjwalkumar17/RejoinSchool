@@ -60,8 +60,5 @@ public class contactController {
         modelAndView.addObject("contactMsgs",contactMsg);
         return modelAndView;
     }
-    public List<Contact> findMsgWithOpenStatus(){
-        List<Contact> contactMsgs= ContactRepo.findMsgWithStatus(Constants.OPEN);
-        return contactMsgs;
-    }
+
 }

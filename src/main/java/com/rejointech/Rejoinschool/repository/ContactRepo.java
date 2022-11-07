@@ -26,7 +26,7 @@ public class ContactRepo {
                 contact.getSubject(),contact.getMessage(),contact.getStatus(),contact.getCreatedAt(),
                 contact.getCreatedBy());
     }
-    public List<Contact> findMsgWithStatus(String status){
+    public  List<Contact> findMsgWithStatus(String status){
         String sql="SELECT * FROM CONTACT_MSG WHERE STATUS = ?";
         return jdbcTemplate.query(sql, new PreparedStatementSetter() {
             @Override
