@@ -9,11 +9,13 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
 public class ContactRepo {
-    private final JdbcTemplate jdbcTemplate;
+    private static JdbcTemplate jdbcTemplate=null;
 
     @Autowired
     public ContactRepo(JdbcTemplate jdbcTemplate) {
@@ -26,7 +28,7 @@ public class ContactRepo {
                 contact.getSubject(),contact.getMessage(),contact.getStatus(),contact.getCreatedAt(),
                 contact.getCreatedBy());
     }
-    public  List<Contact> findMsgWithStatus(String status){
+    public static List<Contact> findMsgWithStatus(String status){
         String sql="SELECT * FROM CONTACT_MSG WHERE STATUS = ?";
         return jdbcTemplate.query(sql, new PreparedStatementSetter() {
             @Override
@@ -34,5 +36,18 @@ public class ContactRepo {
                 ps.setString(1,status);
             }
         },new ContactRowMapper());
+    }
+
+    public int updatedMsgStatus(int id, String status, String updatedBy) {
+        String sql="UPDATE CONTACT_MSG SET STATUS = ? , UPDATED_BY = ? , UPDATED_AT = ? WHERE CONTACT_ID = ?";
+        return jdbcTemplate.update(sql, new PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement ps) throws SQLException {
+                ps.setString(1,status);
+                ps.setString(2,updatedBy);
+                ps.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+                ps.setInt(4,id);
+            }
+        });
     }
 }

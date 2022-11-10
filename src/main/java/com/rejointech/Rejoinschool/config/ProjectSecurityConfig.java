@@ -22,6 +22,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
                     .and()
                     .authorizeRequests()
                     .mvcMatchers("/dashboard").authenticated()
+                    .mvcMatchers("/displayMessages").hasRole("ADMIN")
                     .mvcMatchers("/home").permitAll()
                     .mvcMatchers("/holidays/**").permitAll()
                     .mvcMatchers("/contact").permitAll()
