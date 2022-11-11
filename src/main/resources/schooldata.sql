@@ -1,0 +1,77 @@
+INSERT INTO `HOLIDAYS` VALUES (
+'Jan 1',
+'New Year''s day',
+'FESTIVAL',
+CURDATE(),
+'DBA',
+NULL,
+NULL
+);
+INSERT INTO `HOLIDAYS` VALUES (
+'Nov 12',
+'Diwali',
+'FESTIVAL',
+CURDATE(),
+'DBA',
+NULL,
+NULL
+);
+INSERT INTO `HOLIDAYS` VALUES (
+'Mar 18',
+'Holi',
+'FESTIVAL',
+CURDATE(),
+'DBA',
+NULL,
+NULL
+);
+
+INSERT INTO `HOLIDAYS` VALUES (
+'May 1',
+'Labor day',
+'FEDERAL',
+CURDATE(),
+'DBA',
+NULL,
+NULL
+);
+
+INSERT INTO `HOLIDAYS` VALUES (
+'sep 12',
+'Chatth',
+'FESTIVAL',
+CURDATE(),
+'DBA',
+NULL,
+NULL
+);
+
+INSERT INTO `HOLIDAYS` VALUES (
+'21 nov',
+'Bank',
+'FEDERAL',
+CURDATE(),
+'DBA',
+NULL,
+NULL
+);
+
+INSERT INTO `HOLIDAYS` VALUES (
+'12 oct',
+'Baishakhi',
+'FESTIVAL',
+CURDATE(),
+'DBA',
+NULL,
+NULL
+);
+
+INSERT INTO `HOLIDAYS` VALUES (
+'2 May',
+'Mayday',
+'FEDERAL'
+CURDATE(),
+'DBA',
+NULL,
+NULL
+);

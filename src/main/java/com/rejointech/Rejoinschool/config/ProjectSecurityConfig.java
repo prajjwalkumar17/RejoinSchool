@@ -15,10 +15,32 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and().formLogin()
 //                .and().httpBasic();
 //    }
-        @Override
+    //TODO was for H2 Database
+//        @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//            http.csrf().ignoringAntMatchers("/saveMsg")
+//                    .ignoringAntMatchers("/h2-console/**")
+//                    .and()
+//                    .authorizeRequests()
+//                    .mvcMatchers("/dashboard").authenticated()
+//                    .mvcMatchers("/displayMessages").hasRole("ADMIN")
+//                    .mvcMatchers("/home").permitAll()
+//                    .mvcMatchers("/holidays/**").permitAll()
+//                    .mvcMatchers("/contact").permitAll()
+//                    .mvcMatchers("/saveMsg").permitAll()
+//                    .mvcMatchers("/courses").permitAll()
+//                    .mvcMatchers("/about").permitAll()
+//                    .mvcMatchers("/login").permitAll()
+//                    .and().formLogin().loginPage("/login")
+//                    .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
+//                    .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
+//                    .and().authorizeRequests().antMatchers("/h2-console/**").permitAll()
+//                    .and().httpBasic();
+//            http.headers().frameOptions().disable();
+//    }
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
             http.csrf().ignoringAntMatchers("/saveMsg")
-                    .ignoringAntMatchers("/h2-console/**")
                     .and()
                     .authorizeRequests()
                     .mvcMatchers("/dashboard").authenticated()
@@ -33,9 +55,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
                     .and().formLogin().loginPage("/login")
                     .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                     .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
-                    .and().authorizeRequests().antMatchers("/h2-console/**").permitAll()
                     .and().httpBasic();
-            http.headers().frameOptions().disable();
     }
 
     @Override
